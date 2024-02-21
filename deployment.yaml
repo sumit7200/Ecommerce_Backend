@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-test-app-deployment
+  labels:
+    app: spring-test-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring-test-app
+  template:
+    metadata:
+      labels:
+        app: spring-test-app
+    spec:
+      containers:
+        - name: springboot-container
+          image: savitsharma/ecom.jar:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+
